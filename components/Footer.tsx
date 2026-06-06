@@ -135,6 +135,24 @@ export default function Footer() {
             ))}
           </div>
         </div>
+
+        <div className="mt-6 flex justify-center">
+          <a
+            href="https://uply.digital"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity"
+          >
+            <span className="text-preto text-xs">Desenvolvido por</span>
+            <Image
+              src="/uply-logo.png"
+              alt="Uply Digital"
+              width={60}
+              height={20}
+              className="h-[18px] w-auto object-contain"
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );
