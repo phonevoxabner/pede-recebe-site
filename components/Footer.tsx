@@ -150,6 +150,7 @@ export default function Footer() {
               width={60}
               height={20}
               className="h-[18px] w-auto object-contain"
+              style={{ filter: "brightness(0)" }}
             />
           </a>
         </div>
