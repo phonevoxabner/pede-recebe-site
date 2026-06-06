@@ -121,7 +121,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-preto/15 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-preto/70 text-sm" suppressHydrationWarning>
-            &copy; {new Date().getFullYear()} Pede&amp;Recebe. Todos os direitos reservados.
+            {`© ${new Date().getFullYear()} Pede&Recebe. Todos os direitos reservados.`}
           </p>
           <div className="flex items-center gap-6">
             {LINKS_LEGAL.map((link) => (
