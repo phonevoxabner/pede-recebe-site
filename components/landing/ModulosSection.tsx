@@ -89,7 +89,11 @@ export default function ModulosSection() {
   );
 
   return (
-    <section className="py-12 sm:py-16 lg:py-24">
+    <section className="relative overflow-hidden py-12 sm:py-16 lg:py-24">
+      <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-amarelo/12 pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-1/2 -left-16 w-56 h-56 rounded-full bg-amarelo/8 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-16 right-1/4 w-40 h-40 rounded-full bg-amarelo/6 pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-1/3 left-1/3 w-3 h-3 rounded-full bg-amarelo/30 pointer-events-none" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 reveal">
           <SectionLabel>Plataforma completa</SectionLabel>

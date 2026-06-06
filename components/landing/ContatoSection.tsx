@@ -47,7 +47,10 @@ export default function ContatoSection() {
   const inputClass = "bg-white border-2 border-preto rounded-xl px-4 py-3 text-preto font-medium text-sm placeholder-preto/40 outline-none focus:ring-2 focus:ring-preto/30 transition-all w-full";
 
   return (
-    <section id="contato" className="py-16 lg:py-24 scroll-mt-16">
+    <section id="contato" className="relative overflow-hidden py-16 lg:py-24 scroll-mt-16">
+      <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-amarelo/12 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 -left-12 w-48 h-48 rounded-full bg-amarelo/8 pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-1/2 right-1/3 w-2 h-2 rounded-full bg-amarelo/30 pointer-events-none" aria-hidden="true" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-10 reveal">

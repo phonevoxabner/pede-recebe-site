@@ -18,7 +18,11 @@ const EXCLUSIVOS = [
 
 export default function Comparativo() {
   return (
-    <section className="py-12 sm:py-16 lg:py-28">
+    <section className="relative overflow-hidden py-12 sm:py-16 lg:py-28">
+      <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-amarelo/12 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 -left-16 w-60 h-60 rounded-full bg-amarelo/8 pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-1/2 right-1/3 w-3 h-3 rounded-full bg-amarelo/35 pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-1/3 left-1/4 w-2 h-2 rounded-full bg-amarelo/25 pointer-events-none" aria-hidden="true" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 reveal">
           <SectionLabel>Comparativo</SectionLabel>

@@ -23,6 +23,10 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: #FFFDF0;
+  background-image:
+    radial-gradient(ellipse 55% 40% at 88% 6%,  rgba(245,196,0,0.18) 0%, transparent 100%),
+    radial-gradient(ellipse 45% 50% at 12% 52%, rgba(245,196,0,0.11) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 35% at 58% 92%, rgba(245,196,0,0.09) 0%, transparent 100%);
   color: #1A1209;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
