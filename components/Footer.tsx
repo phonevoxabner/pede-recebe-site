@@ -6,19 +6,19 @@ import Image from "next/image";
 
 const LINKS_PRODUTO = [
   { label: "Como funciona", href: "/#como-funciona" },
-  { label: "Funcionalidades", href: "/funcionalidades" },
-  { label: "Planos e preços", href: "/planos" },
+  { label: "Funcionalidades", href: "/#funcionalidades" },
+  { label: "Planos e preços", href: "/#planos" },
 ];
 
 const LINKS_EMPRESA = [
-  { label: "Sobre nós", href: "/sobre" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contato", href: "/contato" },
+  { label: "Sobre nós", href: "/#" },
+  { label: "Blog", href: "/#" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 const LINKS_LEGAL = [
-  { label: "Privacidade", href: "/privacidade" },
-  { label: "Termos de uso", href: "/termos" },
+  { label: "Privacidade", href: "/#" },
+  { label: "Termos de uso", href: "/#" },
 ];
 
 export default function Footer() {
