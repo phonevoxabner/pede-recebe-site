@@ -8,8 +8,7 @@ const DIFERENCIAIS = [
     tag: "Parceiro Meta Oficial",
     title: "API Oficial do WhatsApp",
     description:
-      "Ao contrário de bots e apps não-autorizados, usamos a API Oficial do Meta. Isso significa que seu número nunca será banido — garantia real, não promessa vazia.",
-    tagColor: "text-verde bg-verde/10 border-verde/20",
+      "Ao contrário de bots e apps não-autorizados, usamos a API Oficial do Meta. Isso significa que seu número nunca será banido. Garantia real, não promessa vazia.",
   },
   {
     icon: IconGlobe,
@@ -17,64 +16,61 @@ const DIFERENCIAIS = [
     title: "Funciona no navegador",
     description:
       "Abra em qualquer computador, tablet ou celular. Sem instalar nada, sem depender de um único dispositivo. Se a internet funciona, seu sistema funciona.",
-    tagColor: "text-amarelo bg-amarelo/10 border-amarelo/20",
   },
   {
     icon: IconLock,
     tag: "Independente",
     title: "Seus dados são seus",
     description:
-      "Você não depende do iFood nem de nenhuma grande plataforma. Seus clientes, seu histórico, sua autonomia — tudo permanece com você.",
-    tagColor: "text-white/70 bg-white/5 border-white/15",
+      "Você não depende do iFood nem de nenhuma grande plataforma. Seus clientes, seu histórico, sua autonomia. Tudo permanece com você.",
   },
 ];
 
 export default function Diferenciais() {
   return (
-    <section className="py-20 lg:py-28 bg-cinza-escuro">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14 reveal">
-          <SectionLabel>Por que o Pede&amp;Recebe</SectionLabel>
-          <h2 className="font-condensed text-4xl sm:text-5xl font-bold text-white leading-tight">
+    <section className="bg-amarelo py-12 sm:py-16 lg:py-24">
+      {/* sombra decorativa */}
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 reveal">
+          <SectionLabel onYellow>Por que o Pede&amp;Recebe</SectionLabel>
+          <h2 className="font-condensed text-4xl sm:text-5xl font-bold text-preto leading-tight mt-2">
             Três razões que fazem
             <br />
-            <span className="text-amarelo">toda a diferença</span>
+            toda a diferença
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {DIFERENCIAIS.map((item, i) => {
             const Icon = item.icon;
             return (
               <div
-                key={i}
-                className="reveal bg-preto border border-white/10 hover:border-amarelo/40 rounded-2xl p-8 transition-all duration-300 group relative overflow-hidden"
+                key={item.title}
+                className="reveal bg-white border-2 border-preto rounded-2xl p-7 card-hover hover:shadow-xl group relative overflow-hidden"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <div
-                  className="absolute top-0 left-0 right-0 h-0.5 bg-amarelo scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
-                  aria-hidden="true"
-                />
-                <div className="w-14 h-14 rounded-2xl bg-amarelo/10 flex items-center justify-center mb-6 group-hover:bg-amarelo/20 transition-colors">
-                  <Icon size={26} color="#F5C400" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-preto opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" aria-hidden="true" />
+                <div className="w-12 h-12 rounded-xl bg-amarelo flex items-center justify-center mb-5">
+                  <Icon size={24} color="#1A1209" />
                 </div>
-                <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full border mb-4 ${item.tagColor}`}>
+                <span className="inline-block text-[10px] font-bold text-preto/70 bg-preto/8 px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">
                   {item.tag}
                 </span>
-                <h3 className="text-white font-semibold text-xl mb-3 font-condensed">
-                  {item.title}
-                </h3>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <h3 className="text-preto font-bold text-xl mb-2 font-condensed">{item.title}</h3>
+                <p className="text-preto/75 text-sm leading-relaxed">{item.description}</p>
               </div>
             );
           })}
         </div>
-        <SectionCTA
-          texto="Pronto para vender sem risco de bloqueio?"
-          botao="Testar grátis por 14 dias"
-        />
+
+        <div className="mt-10">
+          <SectionCTA
+          onYellow
+            texto="Pronto para vender sem risco de bloqueio?"
+            botao="Testar grátis por 14 dias"
+          />
+        </div>
       </div>
     </section>
   );

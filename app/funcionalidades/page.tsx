@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
-  title: "Funcionalidades — Pede&Recebe",
+  title: "Funcionalidades | Pede&Recebe",
   description:
     "Cardápio digital, painel de pedidos, pagamento online, relatórios e muito mais.",
 };
@@ -32,7 +32,7 @@ const EXTRAS = [
   {
     icon: IconMonitor,
     titulo: "Multi-dispositivo",
-    descricao: "Celular, tablet, computador — tudo ao mesmo tempo.",
+    descricao: "Celular, tablet, computador. Tudo ao mesmo tempo..",
     items: ["100% no navegador", "Chrome, Safari, Firefox", "Múltiplos atendentes"],
   },
 ];
@@ -143,10 +143,10 @@ export default function FuncionalidadesPage() {
               <p className="text-white/60 text-lg leading-relaxed mb-6">
                 Monte o cardápio com fotos, descrições, variações e preços.
                 Compartilhe o link no Instagram, nos stories ou na entrada do
-                restaurante. O cliente abre, escolhe e pede — tudo pelo celular.
+                restaurante. O cliente abre, escolhe e pede, tudo pelo celular.
               </p>
               <ul className="space-y-3">
-                {["Categorias e destaques personalizáveis","Complementos e observações por item","Disponível 24h, atualiza em tempo real","Sem app para baixar — abre no navegador"].map((item) => (
+                {["Categorias e destaques personalizáveis","Complementos e observações por item","Disponível 24h, atualiza em tempo real","Sem app para baixar, abre no navegador"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-white/70 text-sm">
                     <div className="w-5 h-5 rounded-full bg-verde/15 flex items-center justify-center shrink-0">
                       <IconCheck size={11} color="#22C55E" />

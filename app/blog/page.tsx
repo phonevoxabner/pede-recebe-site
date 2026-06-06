@@ -4,7 +4,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import { IconArrowRight } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
-  title: "Blog — Pede&Recebe",
+  title: "Blog | Pede&Recebe",
   description:
     "Artigos, dicas e novidades sobre pedidos pelo WhatsApp, automação para restaurantes e como vender mais sem depender do iFood.",
 };

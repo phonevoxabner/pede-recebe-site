@@ -10,26 +10,27 @@ function Logo() {
   const [imgOk, setImgOk] = useState(true);
   return (
     <div className="flex items-center gap-2">
-      {imgOk && (
+      {imgOk ? (
         <Image
-          src="/logo.png"
-          alt=""
-          width={36}
-          height={36}
-          className="rounded-lg"
+          src="/logo-pederecebe.png"
+          alt="Pede&Recebe"
+          width={829}
+          height={301}
+          className="h-9 w-auto object-contain"
           priority
           onError={() => setImgOk(false)}
         />
+      ) : (
+        <span className="font-condensed text-xl font-bold text-preto">
+          Pede<span className="underline decoration-2">&amp;</span>Recebe
+        </span>
       )}
-      <span className="font-condensed text-xl font-bold text-white">
-        Pede<span className="text-amarelo">&amp;</span>Recebe
-      </span>
     </div>
   );
 }
 
 const NAV_LINKS = [
-  { label: "Como funciona",  href: "/#como-funciona"   },
+  { label: "Como funciona",   href: "/#como-funciona"   },
   { label: "Funcionalidades", href: "/#funcionalidades" },
   { label: "Planos",          href: "/#planos"          },
   { label: "Blog",            href: "/blog"             },
@@ -41,16 +42,15 @@ export default function Nav() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ── Smooth scroll para links de âncora ── */
   const handleAnchor = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
       if (!href.startsWith("/#")) return;
-      const id = href.slice(2); // remove "/#"
+      const id = href.slice(2);
       if (pathname === "/") {
         e.preventDefault();
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -62,10 +62,8 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "backdrop-blur-md bg-preto/95 border-b border-amarelo/20"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 bg-amarelo transition-shadow duration-300 ${
+        scrolled ? "shadow-[0_2px_12px_rgba(26,18,9,0.12)]" : ""
       }`}
       aria-label="Navegação principal"
     >
@@ -75,14 +73,14 @@ export default function Nav() {
             <Logo />
           </Link>
 
-          {/* Desktop */}
+          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleAnchor(e, link.href)}
-                className="text-sm text-white/70 hover:text-white transition-colors font-medium"
+                className="text-sm text-preto/70 hover:text-preto transition-colors font-semibold"
               >
                 {link.label}
               </a>
@@ -93,22 +91,21 @@ export default function Nav() {
             <a
               href="/#contato"
               onClick={(e) => handleAnchor(e, "/#contato")}
-              className="text-sm text-white/70 hover:text-white transition-colors font-medium"
+              className="text-sm text-preto/70 hover:text-preto transition-colors font-semibold"
             >
               Contato
             </a>
             <a
               href="/#planos"
               onClick={(e) => handleAnchor(e, "/#planos")}
-              className="bg-amarelo text-preto font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-amarelo-claro transition-colors"
+              className="bg-preto text-amarelo font-bold text-sm px-5 py-2.5 rounded-lg hover:bg-preto/80 transition-colors cta-pulse"
             >
               Testar grátis
             </a>
           </div>
 
-          {/* Mobile toggle */}
           <button
-            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="md:hidden text-preto p-2 rounded-lg hover:bg-preto/10 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
@@ -120,14 +117,14 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       {menuOpen && (
-        <div className="md:hidden bg-cinza-escuro border-t border-white/10">
+        <div className="md:hidden bg-amarelo border-t border-preto/15">
           <div className="px-4 py-5 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleAnchor(e, link.href)}
-                className="text-white/80 hover:text-white py-3 border-b border-white/5 font-medium transition-colors block"
+                className="text-preto/80 hover:text-preto py-3 border-b border-preto/10 font-semibold transition-colors block"
               >
                 {link.label}
               </a>
@@ -135,14 +132,14 @@ export default function Nav() {
             <a
               href="/#contato"
               onClick={(e) => handleAnchor(e, "/#contato")}
-              className="text-white/80 hover:text-white py-3 border-b border-white/5 font-medium transition-colors block"
+              className="text-preto/80 hover:text-preto py-3 border-b border-preto/10 font-semibold transition-colors block"
             >
               Contato
             </a>
             <a
               href="/#planos"
               onClick={(e) => handleAnchor(e, "/#planos")}
-              className="mt-3 bg-amarelo text-preto font-semibold px-5 py-3 rounded-lg text-center hover:bg-amarelo-claro transition-colors block"
+              className="mt-3 bg-preto text-amarelo font-bold px-5 py-3 rounded-lg text-center hover:bg-preto/80 transition-colors cta-pulse block"
             >
               Testar grátis
             </a>

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import SectionLabel from "@/components/ui/SectionLabel";
-import { IconWhatsapp, IconMail, IconCheck } from "@/components/ui/icons";
+import { IconCheck } from "@/components/ui/icons";
 
 const SEGMENTOS = [
   "Hamburgueria",
@@ -19,6 +19,18 @@ export default function ContatoSection() {
   const [enviado, setEnviado] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [segmentosSelecionados, setSegmentosSelecionados] = useState<string[]>([]);
+  const [segmentoAberto, setSegmentoAberto] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickFora(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setSegmentoAberto(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickFora);
+    return () => document.removeEventListener("mousedown", handleClickFora);
+  }, []);
 
   function toggleSegmento(seg: string) {
     setSegmentosSelecionados((prev) =>
@@ -29,176 +41,158 @@ export default function ContatoSection() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setEnviando(true);
-    setTimeout(() => {
-      setEnviando(false);
-      setEnviado(true);
-    }, 1200);
+    setTimeout(() => { setEnviando(false); setEnviado(true); }, 1200);
   }
 
+  const inputClass = "bg-white border-2 border-preto rounded-xl px-4 py-3 text-preto font-medium text-sm placeholder-preto/40 outline-none focus:ring-2 focus:ring-preto/30 transition-all w-full";
+
   return (
-    <section id="contato" className="py-20 lg:py-28 scroll-mt-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+    <section id="contato" className="py-16 lg:py-24 scroll-mt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Esquerda — copy */}
-          <div className="reveal">
-            <SectionLabel>Contato</SectionLabel>
-            <h2 className="font-condensed text-4xl sm:text-5xl font-bold text-white leading-tight mt-2 mb-4">
-              Fale com a gente
-            </h2>
-            <p className="text-white/50 text-lg leading-relaxed mb-8">
-              Tem dúvida, quer uma demonstração ou precisa de ajuda para
-              migrar de sistema? Respondemos em até 2 horas úteis.
-            </p>
+        <div className="text-center mb-10 reveal">
+          <SectionLabel>Contato</SectionLabel>
+          <h2 className="font-condensed text-4xl sm:text-5xl font-bold text-preto leading-tight mt-2 mb-3">
+            Fale com a gente
+          </h2>
+          <p className="text-preto/70 text-lg max-w-xl mx-auto">
+            Respondemos em até 2 horas úteis. Sem cartão de crédito, sem burocracia.
+          </p>
+        </div>
 
-            <div className="flex flex-col gap-4 mb-8">
-              <a
-                href="https://wa.me/5511999999999"
-                className="flex items-center gap-4 bg-cinza-escuro border border-white/10 hover:border-verde/30 rounded-2xl p-4 transition-all group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-verde/10 flex items-center justify-center shrink-0 group-hover:bg-verde/20 transition-colors">
-                  <IconWhatsapp size={20} color="#22C55E" />
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-sm">(11) 99999-9999</div>
-                  <div className="text-verde text-xs font-medium mt-0.5">Resposta em minutos via WhatsApp</div>
-                </div>
-              </a>
-
-              <a
-                href="mailto:contato@pederecebe.com.br"
-                className="flex items-center gap-4 bg-cinza-escuro border border-white/10 hover:border-amarelo/30 rounded-2xl p-4 transition-all group"
-              >
-                <div className="w-10 h-10 rounded-xl bg-amarelo/10 flex items-center justify-center shrink-0 group-hover:bg-amarelo/20 transition-colors">
-                  <IconMail size={20} color="#F5C400" />
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-sm">contato@pederecebe.com.br</div>
-                  <div className="text-white/40 text-xs mt-0.5">Respondemos em até 2 horas úteis</div>
-                </div>
-              </a>
-            </div>
-
-            <div className="bg-amarelo/10 border border-amarelo/20 rounded-2xl p-5">
-              <div className="text-amarelo font-semibold text-sm mb-1">Quer ver o produto ao vivo?</div>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Agendamos uma demo de 20 minutos com um cardápio de exemplo do seu restaurante.
+        <div className="max-w-lg mx-auto reveal">
+          {enviado ? (
+            <div className="bg-amarelo border-2 border-preto rounded-2xl p-10 text-center">
+              <div className="w-16 h-16 rounded-full bg-preto flex items-center justify-center mx-auto mb-6">
+                <IconCheck size={28} color="#F5C400" />
+              </div>
+              <h3 className="font-condensed text-3xl font-bold text-preto mb-3">Mensagem enviada!</h3>
+              <p className="text-preto/70 text-base">
+                Nossa equipe vai responder em até 2 horas úteis pelo WhatsApp que você informou.
               </p>
             </div>
-          </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="bg-amarelo border-2 border-preto rounded-2xl p-7 space-y-5">
 
-          {/* Direita — formulário */}
-          <div className="reveal">
-            {enviado ? (
-              <div className="bg-cinza-escuro border border-verde/20 rounded-2xl p-10 text-center">
-                <div className="w-16 h-16 rounded-full bg-verde/15 flex items-center justify-center mx-auto mb-6">
-                  <IconCheck size={28} color="#22C55E" />
-                </div>
-                <h3 className="font-condensed text-3xl font-bold text-white mb-3">Mensagem enviada!</h3>
-                <p className="text-white/50 text-base">
-                  Nossa equipe vai responder em até 2 horas úteis pelo
-                  WhatsApp que você informou.
-                </p>
+              {/* Nome */}
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="c-nome" className="text-preto font-semibold text-sm">
+                  Seu nome <span className="text-preto/40" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="c-nome" name="nome" type="text" placeholder="João Silva" required
+                  className={inputClass}
+                />
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-cinza-escuro border border-white/10 rounded-2xl p-8 space-y-5"
+
+              {/* WhatsApp */}
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="c-whatsapp" className="text-preto font-semibold text-sm">
+                  WhatsApp <span className="text-preto/40" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="c-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" required
+                  className={inputClass}
+                />
+              </div>
+
+              {/* Nome do restaurante */}
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="c-restaurante" className="text-preto font-semibold text-sm">
+                  Nome do restaurante <span className="text-preto/40" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="c-restaurante" name="restaurante" type="text" placeholder="Don Pizzaria" required
+                  className={inputClass}
+                />
+              </div>
+
+              {/* Segmento — dropdown colapsável */}
+              <div className="flex flex-col gap-1.5" ref={dropdownRef}>
+                <span className="text-preto font-semibold text-sm">Segmento</span>
+                <div className="relative">
+                  {/* Trigger */}
+                  <button
+                    type="button"
+                    onClick={() => setSegmentoAberto((v) => !v)}
+                    className="w-full flex items-center justify-between gap-2 bg-white border-2 border-preto rounded-xl px-4 py-3 text-sm font-medium text-left transition-all focus:outline-none focus:ring-2 focus:ring-preto/30"
+                  >
+                    <span className={segmentosSelecionados.length > 0 ? "text-preto" : "text-preto/40"}>
+                      {segmentosSelecionados.length === 0
+                        ? "Selecione o tipo do seu negócio"
+                        : segmentosSelecionados.join(", ")}
+                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {segmentosSelecionados.length > 0 && (
+                        <span className="bg-preto text-amarelo text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                          {segmentosSelecionados.length}
+                        </span>
+                      )}
+                      <svg
+                        width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="#1A1209" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                        className="transition-transform duration-200"
+                        style={{ transform: segmentoAberto ? "rotate(180deg)" : "rotate(0deg)" }}
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Dropdown list */}
+                  {segmentoAberto && (
+                    <div
+                      className="absolute left-0 right-0 top-full mt-1 bg-white border-2 border-preto rounded-xl z-20 overflow-hidden shadow-lg"
+                      style={{ maxHeight: 220, overflowY: "auto" }}
+                    >
+                      {SEGMENTOS.map((seg, i) => {
+                        const ativo = segmentosSelecionados.includes(seg);
+                        return (
+                          <button
+                            key={seg}
+                            type="button"
+                            onClick={() => toggleSegmento(seg)}
+                            className={`flex items-center gap-3 w-full px-4 py-2.5 text-sm font-medium text-left transition-colors ${
+                              i < SEGMENTOS.length - 1 ? "border-b border-preto/10" : ""
+                            } ${ativo ? "bg-preto text-amarelo" : "text-preto hover:bg-preto/5"}`}
+                          >
+                            <span
+                              className="w-4 h-4 rounded flex items-center justify-center shrink-0 border-2 transition-colors"
+                              style={{
+                                borderColor: ativo ? "#F5C400" : "#1A1209",
+                                backgroundColor: ativo ? "#F5C400" : "transparent",
+                              }}
+                            >
+                              {ativo && (
+                                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1A1209" strokeWidth="3.5">
+                                  <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                              )}
+                            </span>
+                            {seg}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                disabled={enviando}
+                className="cta-pulse w-full bg-preto text-amarelo font-bold py-4 rounded-xl border-2 border-preto hover:bg-preto/80 transition-colors disabled:opacity-60 disabled:cursor-not-allowed text-base mt-2"
               >
-                {/* Nome */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="c-nome" className="text-white/70 text-sm font-medium">
-                    Seu nome <span className="text-amarelo" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    id="c-nome"
-                    name="nome"
-                    type="text"
-                    placeholder="João Silva"
-                    required
-                    className="bg-cinza-medio border border-white/10 focus:border-amarelo/50 rounded-xl px-4 py-3 text-white text-sm placeholder-white/25 outline-none transition-colors"
-                  />
-                </div>
+                {enviando ? "Enviando..." : "Quero testar grátis"}
+              </button>
 
-                {/* WhatsApp */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="c-whatsapp" className="text-white/70 text-sm font-medium">
-                    WhatsApp <span className="text-amarelo" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    id="c-whatsapp"
-                    name="whatsapp"
-                    type="tel"
-                    placeholder="(11) 99999-9999"
-                    required
-                    className="bg-cinza-medio border border-white/10 focus:border-amarelo/50 rounded-xl px-4 py-3 text-white text-sm placeholder-white/25 outline-none transition-colors"
-                  />
-                </div>
-
-                {/* Nome do restaurante */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="c-restaurante" className="text-white/70 text-sm font-medium">
-                    Nome do restaurante <span className="text-amarelo" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    id="c-restaurante"
-                    name="restaurante"
-                    type="text"
-                    placeholder="Don Pizzaria"
-                    required
-                    className="bg-cinza-medio border border-white/10 focus:border-amarelo/50 rounded-xl px-4 py-3 text-white text-sm placeholder-white/25 outline-none transition-colors"
-                  />
-                </div>
-
-                {/* Segmento */}
-                <div className="flex flex-col gap-2">
-                  <span className="text-white/70 text-sm font-medium">
-                    Segmento{" "}
-                    <span className="text-white/30 font-normal text-xs">(pode escolher mais de um)</span>
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {SEGMENTOS.map((seg) => {
-                      const ativo = segmentosSelecionados.includes(seg);
-                      return (
-                        <button
-                          key={seg}
-                          type="button"
-                          onClick={() => toggleSegmento(seg)}
-                          className="flex items-center gap-1.5 text-sm px-3.5 py-2 rounded-xl border transition-all"
-                          style={
-                            ativo
-                              ? { backgroundColor: "rgba(245,196,0,0.15)", borderColor: "rgba(245,196,0,0.5)", color: "#F5C400" }
-                              : { backgroundColor: "transparent", borderColor: "rgba(255,255,255,0.12)", color: "rgba(255,255,255,0.5)" }
-                          }
-                        >
-                          {ativo && (
-                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                              <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                          )}
-                          {seg}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={enviando}
-                  className="w-full bg-amarelo text-preto font-semibold py-4 rounded-xl hover:bg-amarelo-claro transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {enviando ? "Enviando..." : "Quero testar grátis"}
-                </button>
-
-                <p className="text-white/25 text-xs text-center">
-                  Sem cartão de crédito. Cancele quando quiser.
-                </p>
-              </form>
-            )}
-          </div>
-
+              <p className="text-preto/50 text-xs text-center">
+                Sem cartão de crédito. Cancele quando quiser.
+              </p>
+            </form>
+          )}
         </div>
+
       </div>
     </section>
   );

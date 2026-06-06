@@ -14,11 +14,11 @@ import ContatoSection from "@/components/landing/ContatoSection";
 import CTAFinal from "@/components/landing/CTAFinal";
 
 export const metadata: Metadata = {
-  title: "Pede&Recebe — Pedidos pelo WhatsApp sem bloqueio | API Oficial Meta",
+  title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio | API Oficial Meta",
   description:
     "Sistema de pedidos via WhatsApp com API Oficial do Meta para restaurantes. Sem risco de bloqueio, funciona no navegador, independente do iFood. Teste grátis por 14 dias.",
   openGraph: {
-    title: "Pede&Recebe — Pedidos pelo WhatsApp sem bloqueio",
+    title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio",
     description:
       "API Oficial do WhatsApp para restaurantes. Seu número nunca bloqueia. Funciona no navegador. Independente do iFood.",
     type: "website",

@@ -55,7 +55,7 @@ export default function SobrePage() {
             </p>
             <p className="text-white/60 text-base leading-relaxed mb-6">
               A maioria dos sistemas de automação de WhatsApp para restaurantes
-              usava — e ainda usa — APIs não-oficiais. Funcionam bem por um tempo.
+              usava, e ainda usa, APIs não-oficiais. Funcionam bem por um tempo.
               Mas o Meta identifica o comportamento suspeito e bane o número.
               Fim das mensagens, fim das vendas, fim do fim de semana.
             </p>
@@ -66,7 +66,7 @@ export default function SobrePage() {
               forma de garantir que o número do nosso cliente não será bloqueado.
             </p>
             <p className="text-white/60 text-base leading-relaxed">
-              Em 2025, o iFood comprou a Anota AI — o maior sistema de automação
+              Em 2025, o iFood comprou a Anota AI, o maior sistema de automação
               de WhatsApp para restaurantes do Brasil. A consolidação no setor
               nos motivou ainda mais: restaurantes precisam de alternativas
               independentes e confiáveis. É isso que construímos.

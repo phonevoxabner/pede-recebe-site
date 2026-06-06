@@ -20,11 +20,15 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Pede&Recebe — Pedidos pelo WhatsApp sem bloqueio",
+  title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio",
   description:
     "Sistema de pedidos via WhatsApp com API Oficial do Meta. Sem risco de bloqueio, funciona no navegador em qualquer dispositivo, independente do iFood.",
+  icons: {
+    icon: "/logo-favicon.png",
+    apple: "/logo-favicon.png",
+  },
   openGraph: {
-    title: "Pede&Recebe — Pedidos pelo WhatsApp sem bloqueio",
+    title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio",
     description:
       "API Oficial do WhatsApp para restaurantes. Sem bloqueio, sem instalação, independente do iFood.",
     type: "website",
@@ -32,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pede&Recebe — Pedidos pelo WhatsApp",
+    title: "Pede&Recebe | Pedidos pelo WhatsApp",
     description: "API Oficial do WhatsApp para restaurantes. Zero bloqueio.",
   },
 };

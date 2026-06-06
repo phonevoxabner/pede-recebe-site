@@ -15,7 +15,7 @@ const variants = {
   primary:
     "bg-amarelo text-preto font-semibold hover:bg-amarelo-claro transition-colors",
   ghost:
-    "border border-white/30 text-white font-semibold hover:border-white hover:bg-white/5 transition-colors",
+    "border-2 border-preto text-preto font-semibold hover:bg-preto hover:text-white transition-colors",
   dark: "bg-preto text-amarelo font-semibold hover:bg-cinza-escuro border border-amarelo/30 hover:border-amarelo transition-colors",
 };
 

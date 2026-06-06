@@ -20,7 +20,7 @@ const MODULOS = [
   {
     icon: IconMonitor,
     nome: "Painel de Pedidos",
-    desc: "Kanban em tempo real — Em Análise, Em Produção, Prontos para Entrega.",
+    desc: "Kanban em tempo real: Em Análise, Em Produção, Prontos para Entrega.",
     anchorId: "func-pedidos",
     destaque: false,
   },
@@ -48,7 +48,7 @@ const MODULOS = [
   {
     icon: IconTruck,
     nome: "Entregas",
-    desc: "Gestão de entregadores com status em tempo real — disponível, em rota, offline.",
+    desc: "Gestão de entregadores com status em tempo real: disponível, em rota, offline.",
     anchorId: "func-entregas",
     destaque: true,
   },
@@ -89,14 +89,14 @@ export default function ModulosSection() {
   );
 
   return (
-    <section className="py-20 lg:py-24 bg-cinza-escuro">
+    <section className="py-12 sm:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14 reveal">
           <SectionLabel>Plataforma completa</SectionLabel>
-          <h2 className="font-condensed text-4xl sm:text-5xl font-bold text-white leading-tight">
+          <h2 className="font-condensed text-4xl sm:text-5xl font-bold text-preto leading-tight">
             Tudo em um só lugar
           </h2>
-          <p className="text-white/50 mt-3 text-lg max-w-xl mx-auto">
+          <p className="text-preto/75 mt-3 text-lg max-w-xl mx-auto">
             Oito módulos integrados. Clique em qualquer um para ver como funciona.
           </p>
         </div>
@@ -106,37 +106,35 @@ export default function ModulosSection() {
             const Icon = mod.icon;
             return (
               <a
-                key={i}
+                key={mod.nome}
                 href={`/#${mod.anchorId}`}
                 onClick={(e) => handleClick(e, mod.anchorId)}
-                className="reveal relative rounded-2xl p-6 border border-white/15 bg-preto
-                  hover:border-amarelo/60 hover:-translate-y-1.5
-                  hover:shadow-[0_12px_40px_rgba(245,196,0,0.12)]
-                  hover:bg-[#161616]
-                  transition-all duration-250 group cursor-pointer block"
+                className="reveal relative bg-amarelo rounded-2xl p-6 border-2 border-preto
+                  card-hover hover:shadow-[0_8px_32px_rgba(26,18,9,0.15)]
+                  group cursor-pointer block"
                 style={{ transitionDelay: `${(i % 4) * 70}ms` }}
               >
                 {/* badge novo */}
                 {mod.destaque && (
-                  <span className="absolute top-4 right-4 text-[9px] font-bold text-amarelo bg-amarelo/15 border border-amarelo/25 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  <span className="absolute top-4 right-4 text-[9px] font-bold text-amarelo bg-preto px-2 py-0.5 rounded-full uppercase tracking-wider">
                     Novo
                   </span>
                 )}
 
                 {/* ícone — sempre aceso */}
-                <div className="w-12 h-12 rounded-xl bg-amarelo/12 group-hover:bg-amarelo/22 flex items-center justify-center mb-5 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-preto flex items-center justify-center mb-5 transition-colors">
                   <Icon size={22} color="#F5C400" />
                 </div>
 
-                <div className="font-condensed text-white font-bold text-xl mb-1.5 group-hover:text-amarelo transition-colors">
+                <div className="font-condensed text-preto font-bold text-xl mb-1.5 transition-colors">
                   {mod.nome}
                 </div>
-                <p className="text-white/50 text-sm leading-relaxed mb-4">
+                <p className="text-preto/70 text-sm leading-relaxed mb-4">
                   {mod.desc}
                 </p>
 
                 {/* "Ver detalhes" aparece no hover */}
-                <div className="flex items-center gap-1.5 text-amarelo text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity -translate-y-1 group-hover:translate-y-0">
+                <div className="flex items-center gap-1.5 text-preto/60 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity -translate-y-1 group-hover:translate-y-0">
                   Ver detalhes
                   <IconArrowRight size={13} />
                 </div>
@@ -145,7 +143,7 @@ export default function ModulosSection() {
           })}
         </div>
 
-        <p className="text-center text-white/25 text-sm mt-8">
+        <p className="text-center text-preto/60 text-sm mt-8">
           Todos os módulos inclusos em todos os planos.
         </p>
         <SectionCTA
