@@ -20,24 +20,62 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export const metadata: Metadata = {
-  title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio",
+  metadataBase: new URL("https://pederecebe.com"),
+  title: {
+    default: "Pede&Recebe | Pedidos pelo WhatsApp com API Oficial do Meta",
+    template: "%s | Pede&Recebe",
+  },
   description:
-    "Sistema de pedidos via WhatsApp com API Oficial do Meta. Sem risco de bloqueio, funciona no navegador em qualquer dispositivo, independente do iFood.",
-  icons: {
-    icon: "/logo-favicon.png",
-    apple: "/logo-favicon.png",
+    "Sistema de pedidos via WhatsApp com API Oficial do Meta para restaurantes. Cardápio digital, painel de pedidos, programa de fidelidade e muito mais. Teste grátis por 14 dias, sem cartão.",
+  keywords: [
+    "pedidos whatsapp restaurante",
+    "sistema de pedidos whatsapp",
+    "api oficial whatsapp restaurante",
+    "cardápio digital whatsapp",
+    "whatsapp business restaurante",
+    "painel de pedidos restaurante",
+    "pede e recebe",
+    "alternativa ifood",
+    "receber pedidos whatsapp",
+  ],
+  authors: [{ name: "Pede&Recebe", url: "https://pederecebe.com" }],
+  creator: "Pede&Recebe",
+  publisher: "Pede&Recebe",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: "https://pederecebe.com",
   },
   openGraph: {
     title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio",
     description:
-      "API Oficial do WhatsApp para restaurantes. Sem bloqueio, sem instalação, independente do iFood.",
-    type: "website",
+      "API Oficial do WhatsApp para restaurantes. Cardápio digital, painel de pedidos, programa de fidelidade. Sem bloqueio, sem instalação, independente do iFood.",
+    url: "https://pederecebe.com",
+    siteName: "Pede&Recebe",
     locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/logo-pederecebe.png",
+        width: 829,
+        height: 301,
+        alt: "Pede&Recebe - Pedidos pelo WhatsApp com API Oficial do Meta",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pede&Recebe | Pedidos pelo WhatsApp",
-    description: "API Oficial do WhatsApp para restaurantes. Zero bloqueio.",
+    title: "Pede&Recebe | Pedidos pelo WhatsApp sem bloqueio",
+    description:
+      "API Oficial do WhatsApp para restaurantes. Zero bloqueio, independente do iFood. Teste grátis 14 dias.",
+    images: ["/logo-pederecebe.png"],
+  },
+  icons: {
+    icon: "/logo-favicon.png",
+    apple: "/logo-favicon.png",
   },
 };
 
