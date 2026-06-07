@@ -139,6 +139,7 @@ function Bloco({
   mockup,
   inverter = false,
   fundo = false,
+  ctaBotao = "Testar grátis",
 }: {
   id?: string;
   labelExtra?: string;
@@ -149,6 +150,7 @@ function Bloco({
   mockup: React.ReactNode;
   inverter?: boolean;
   fundo?: boolean;
+  ctaBotao?: string;
 }) {
   return (
     <div id={id} className={`${fundo ? "bg-amarelo" : "bg-transparent"} scroll-mt-20`}>
@@ -183,7 +185,7 @@ function Bloco({
             </ul>
             <SectionCTA
               texto="Quer ver isso funcionando no seu restaurante?"
-              botao="Testar grátis"
+              botao={ctaBotao}
               onYellow={fundo}
             />
           </div>
@@ -218,6 +220,7 @@ export default function Funcionalidades() {
         bullets={["Categorias e destaques personalizáveis","Complementos e observações por item","Atualiza em tempo real, disponível 24h","Sem app para baixar, abre no navegador"]}
         mockup={<MockupCardapio />}
         inverter={false}
+        ctaBotao="Crie seu cardápio agora"
       />
 
       {/* 2. Painel de pedidos */}
@@ -230,6 +233,7 @@ export default function Funcionalidades() {
         mockup={<MockupPedidos />}
         inverter={true}
         fundo={true}
+        ctaBotao="Ver painel em ação"
       />
 
       {/* 3. Atendimento */}
@@ -241,6 +245,7 @@ export default function Funcionalidades() {
         bullets={["Histórico completo por cliente","Vários atendentes no mesmo número","Fazer pedido direto pelo painel","Transferência entre atendentes"]}
         mockup={<MockupAtendimento />}
         inverter={false}
+        ctaBotao="Centralizar meu atendimento"
       />
 
       {/* 4. Financeiro */}
@@ -254,6 +259,7 @@ export default function Funcionalidades() {
         mockup={<MockupFinanceiro />}
         inverter={true}
         fundo={true}
+        ctaBotao="Quero controle financeiro"
       />
 
       {/* 5. Entregas */}
@@ -266,6 +272,7 @@ export default function Funcionalidades() {
         bullets={["Status em tempo real: disponível, em rota, offline","Avaliação por entregador","Atribuição de pedido com um clique","Histórico de entregas por motoboy"]}
         mockup={<MockupEntregas />}
         inverter={false}
+        ctaBotao="Organizar minhas entregas"
       />
 
       {/* 6. Fidelidade */}
@@ -279,6 +286,7 @@ export default function Funcionalidades() {
         mockup={<MockupFidelidade />}
         inverter={true}
         fundo={true}
+        ctaBotao="Fidelizar meus clientes"
       />
 
       {/* 7. Cupons */}
@@ -291,6 +299,7 @@ export default function Funcionalidades() {
         bullets={["Tipos: porcentagem, valor fixo, frete grátis","Limite de usos configurável","Progresso de uso em tempo real","Compartilhe o código pelo WhatsApp"]}
         mockup={<MockupCupons />}
         inverter={false}
+        ctaBotao="Criar meu primeiro cupom"
       />
 
       {/* 8. Estoque */}
@@ -303,6 +312,7 @@ export default function Funcionalidades() {
         mockup={<MockupEstoque />}
         inverter={true}
         fundo={true}
+        ctaBotao="Controlar meu estoque"
       />
 
       {/* CTA final da seção — amarelo para não quebrar o visual */}

@@ -41,12 +41,17 @@ export default function Comparativo() {
             return (
               <div
                 key={s.name}
-                className={`rounded-2xl p-4 sm:p-7 text-center border-2 card-hover hover:shadow-lg ${
+                className={`rounded-2xl p-4 sm:p-7 text-center border-2 card-hover ${
                   s.destaque
-                    ? "bg-amarelo border-preto shadow-lg"
+                    ? "bg-amarelo border-amarelo glow-amarelo shadow-[0_8px_40px_rgba(245,196,0,0.25)] relative z-10 scale-[1.04]"
                     : "bg-white border-preto"
                 }`}
               >
+                {s.destaque && (
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-preto text-amarelo text-[10px] font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                    Melhor opção
+                  </span>
+                )}
                 <div className={`font-condensed text-[10px] sm:text-sm font-bold uppercase tracking-wider mb-2 sm:mb-3 leading-tight ${s.destaque ? "text-preto/60" : "text-preto/40"}`}>
                   <span className="sm:hidden">{s.shortName}</span>
                   <span className="hidden sm:inline">{s.name}</span>

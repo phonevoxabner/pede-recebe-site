@@ -86,7 +86,7 @@ const ESTILOS = {
     cta: "bg-amarelo text-preto hover:brightness-110 shadow-lg",
   },
   preto: {
-    card: "bg-preto border-preto shadow-2xl",
+    card: "border-preto shadow-2xl",
     nome: "text-white/50",
     preco: "text-amarelo",
     periodo: "text-white/40",
@@ -99,7 +99,10 @@ const ESTILOS = {
 function CardInner({ plano, inCarousel = false }: { plano: typeof PLANOS[0]; inCarousel?: boolean }) {
   const s = ESTILOS[plano.variante];
   return (
-    <div className={`flex flex-col rounded-2xl p-7 border-2 relative overflow-hidden ${inCarousel ? "" : "hover:shadow-xl"} ${s.card}`}>
+    <div
+      className={`flex flex-col rounded-2xl p-7 border-2 relative overflow-hidden ${inCarousel ? "" : "hover:shadow-xl"} ${s.card}`}
+      style={plano.variante === "preto" ? { background: "linear-gradient(135deg, #1A1209 0%, #2d2010 50%, #1A1209 100%)" } : undefined}
+    >
       {plano.variante === "marrom" && (
         <>
           <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-amarelo/8 pointer-events-none" />
@@ -109,10 +112,13 @@ function CardInner({ plano, inCarousel = false }: { plano: typeof PLANOS[0]; inC
       )}
       <div className="relative z-10 mb-6">
         <div className={`text-sm font-semibold mb-1 ${s.nome}`}>{plano.nome}</div>
-        <div className="flex items-end gap-1 mb-2">
+        <div className="flex items-end gap-1 mb-1">
           <span className={`font-condensed text-4xl font-bold leading-none ${s.preco}`}>{plano.preco}</span>
           {plano.periodo && <span className={`text-sm mb-1.5 ${s.periodo}`}>{plano.periodo}</span>}
         </div>
+        {plano.nome === "Pro" && (
+          <p className="text-white/40 text-xs italic mb-1.5">Equivale a menos de 1 pedido por dia no iFood</p>
+        )}
         <p className={`text-sm ${s.desc}`}>{plano.descricao}</p>
       </div>
       <ul className="relative z-10 flex flex-col gap-2.5 flex-1 mb-7">
@@ -173,8 +179,8 @@ export default function Planos() {
               <div className="card-hover relative">
                 {plano.destaque && (
                   <div className="absolute -top-4 inset-x-0 flex justify-center z-20 pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 bg-preto text-amarelo text-xs font-bold px-4 py-1.5 rounded-full border-2 border-preto/40 shadow-lg pointer-events-auto whitespace-nowrap">
-                      <IconStar size={11} color="#F5C400" />
+                    <span className="inline-flex items-center gap-1.5 bg-amarelo text-preto text-xs font-bold px-5 py-2 rounded-full border-2 border-preto shadow-xl pointer-events-auto whitespace-nowrap badge-pulse">
+                      <IconStar size={12} color="#1A1209" />
                       Mais popular
                     </span>
                   </div>
@@ -214,8 +220,8 @@ export default function Planos() {
                   <div key={plano.nome} className="min-w-full flex flex-col pt-5">
                     {plano.destaque ? (
                       <div className="flex justify-center mb-3">
-                        <span className="inline-flex items-center gap-1.5 bg-preto text-amarelo text-xs font-bold px-4 py-1.5 rounded-full border-2 border-preto/40 shadow-lg whitespace-nowrap">
-                          <IconStar size={11} color="#F5C400" />
+                        <span className="inline-flex items-center gap-1.5 bg-amarelo text-preto text-xs font-bold px-5 py-2 rounded-full border-2 border-preto shadow-xl whitespace-nowrap badge-pulse">
+                          <IconStar size={12} color="#1A1209" />
                           Mais popular
                         </span>
                       </div>

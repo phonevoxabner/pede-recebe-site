@@ -259,16 +259,22 @@ export default function Hero() {
 
           {/* ── Copy ── */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-amarelo/10 border border-amarelo/30 text-amarelo text-xs font-semibold px-4 py-2 rounded-full mb-8 badge-pulse">
-              <span className="w-2 h-2 rounded-full bg-amarelo pulse-dot"/>
+            <div className="inline-flex items-center gap-2 bg-preto text-amarelo text-xs font-bold px-4 py-2 rounded-full mb-8 shadow-md">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#F5C400" aria-hidden="true">
+                <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
               API Oficial Meta · Parceiro Certificado
             </div>
 
-            <h1 className="font-condensed text-5xl sm:text-6xl lg:text-7xl font-bold leading-none tracking-tight mb-6">
+            <h1 className="font-condensed text-6xl sm:text-7xl lg:text-8xl font-extrabold leading-none tracking-tight mb-4">
               Pedidos pelo WhatsApp
               <br />
               <span className="text-amarelo">que nunca param.</span>
             </h1>
+
+            <p className="text-preto/50 text-sm italic mb-5 leading-snug">
+              "Desenvolvido por quem já perdeu um fim de semana inteiro de vendas com número bloqueado."
+            </p>
 
             <p className="text-preto/75 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg">
               Do cardápio ao financeiro, das entregas ao programa de fidelidade
@@ -289,11 +295,20 @@ export default function Hero() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {["M","A","L","R","T"].map((l, i) => (
-                  <div key={i} className="w-9 h-9 rounded-full border-2 border-preto flex items-center justify-center text-xs font-bold text-preto"
-                    style={{backgroundColor:["#F5C400","#FFD740","#E6B800","#F5C400","#FFD740"][i]}}>
-                    {l}
+              <div className="flex -space-x-3">
+                {[
+                  { l: "M", bg: "#F5C400" },
+                  { l: "A", bg: "#E6B800" },
+                  { l: "L", bg: "#FFD740" },
+                  { l: "R", bg: "#F5C400" },
+                  { l: "T", bg: "#E6B800" },
+                ].map((av, i) => (
+                  <div
+                    key={i}
+                    className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-preto shadow-md"
+                    style={{ backgroundColor: av.bg, zIndex: 5 - i }}
+                  >
+                    {av.l}
                   </div>
                 ))}
               </div>

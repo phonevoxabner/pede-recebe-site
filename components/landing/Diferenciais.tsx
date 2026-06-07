@@ -41,23 +41,36 @@ export default function Diferenciais() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-[1.35fr_1fr_1fr] gap-5">
           {DIFERENCIAIS.map((item, i) => {
             const Icon = item.icon;
+            const isFirst = i === 0;
+            const iconBgColors = ["#22C55E", "#1A1209", "#EF4444"];
+            const iconColors = ["#ffffff", "#F5C400", "#ffffff"];
             return (
               <div
                 key={item.title}
-                className="reveal bg-white border-2 border-preto rounded-2xl p-7 card-hover hover:shadow-xl group relative overflow-hidden"
+                className={`reveal bg-white border-2 border-preto rounded-2xl card-hover hover:shadow-xl group relative overflow-hidden ${
+                  isFirst ? "p-8" : "p-7"
+                }`}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className="absolute top-0 left-0 right-0 h-1 bg-preto opacity-0 group-hover:opacity-100 transition-opacity rounded-t-2xl" aria-hidden="true" />
-                <div className="w-12 h-12 rounded-xl bg-amarelo flex items-center justify-center mb-5">
-                  <Icon size={24} color="#1A1209" />
+                {isFirst && (
+                  <span className="absolute top-5 right-5 inline-block text-[10px] font-bold text-white bg-verde px-3 py-1 rounded-full uppercase tracking-wider">
+                    Exclusivo
+                  </span>
+                )}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  style={{ backgroundColor: iconBgColors[i] }}
+                >
+                  <Icon size={24} color={iconColors[i]} />
                 </div>
                 <span className="inline-block text-[10px] font-bold text-preto/70 bg-preto/8 px-2.5 py-1 rounded-full uppercase tracking-wider mb-3">
                   {item.tag}
                 </span>
-                <h3 className="text-preto font-bold text-xl mb-2 font-condensed">{item.title}</h3>
+                <h3 className={`text-preto font-bold font-condensed mb-2 ${isFirst ? "text-2xl" : "text-xl"}`}>{item.title}</h3>
                 <p className="text-preto/75 text-sm leading-relaxed">{item.description}</p>
               </div>
             );

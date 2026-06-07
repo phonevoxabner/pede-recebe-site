@@ -16,7 +16,7 @@ function Logo() {
           alt="Pede&Recebe"
           width={829}
           height={301}
-          className="h-9 w-auto object-contain"
+          className="h-10 w-auto object-contain"
           priority
           onError={() => setImgOk(false)}
         />
@@ -62,8 +62,10 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-amarelo transition-shadow duration-300 ${
-        scrolled ? "shadow-[0_2px_12px_rgba(26,18,9,0.12)]" : ""
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-amarelo/92 backdrop-blur-md shadow-[0_2px_20px_rgba(26,18,9,0.18)]"
+          : "bg-amarelo"
       }`}
       aria-label="Navegação principal"
     >
@@ -74,7 +76,7 @@ export default function Nav() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -98,8 +100,12 @@ export default function Nav() {
             <a
               href="/#planos"
               onClick={(e) => handleAnchor(e, "/#planos")}
-              className="bg-preto text-amarelo font-bold text-sm px-5 py-2.5 rounded-lg hover:bg-preto/80 transition-colors cta-pulse"
+              className="relative bg-preto text-amarelo font-bold text-sm px-5 py-2.5 rounded-lg hover:bg-preto/80 transition-colors cta-pulse"
             >
+              <span className="absolute -top-1.5 -right-1.5 flex h-3.5 w-3.5" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-verde opacity-75" />
+                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-verde border-2 border-white" />
+              </span>
               Testar grátis
             </a>
           </div>

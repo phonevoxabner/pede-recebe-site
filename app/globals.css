@@ -94,3 +94,17 @@ body {
 .card-hover:hover {
   transform: scale(1.03);
 }
+
+/* pulse verde para badge do nav */
+@keyframes pulseVerde {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+.badge-verde-pulse { animation: pulseVerde 2s ease-in-out infinite; }
+
+/* glow amarelo para coluna destaque no comparativo */
+@keyframes glowAmarelo {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,196,0,0.3), 0 8px 32px rgba(26,18,9,0.15); }
+  50%       { box-shadow: 0 0 24px 4px rgba(245,196,0,0.2), 0 8px 32px rgba(26,18,9,0.15); }
+}
+.glow-amarelo { animation: glowAmarelo 3s ease-in-out infinite; }

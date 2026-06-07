@@ -12,6 +12,8 @@ import Planos from "@/components/landing/Planos";
 import FAQ from "@/components/landing/FAQ";
 import ContatoSection from "@/components/landing/ContatoSection";
 import CTAFinal from "@/components/landing/CTAFinal";
+import QuemEstaPorTras from "@/components/landing/QuemEstaPorTras";
+import EarlyAdopter from "@/components/landing/EarlyAdopter";
 
 export const metadata: Metadata = {
   title: "Pede&Recebe | Pedidos pelo WhatsApp com API Oficial do Meta",
@@ -138,11 +140,13 @@ export default function Home() {
       <StatsBar />
       <Problema />
       <Diferenciais />
+      <QuemEstaPorTras />
       <ModulosSection />
       <Funcionalidades />
       <Comparativo />
       <ComoFunciona />
       <Depoimentos />
+      <EarlyAdopter />
       <Planos />
       <FAQ />
       <ContatoSection />

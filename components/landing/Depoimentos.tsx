@@ -9,6 +9,7 @@ const DEPOIMENTOS = [
     estabelecimento: "Burguer do Marcos",
     cidade: "São Paulo, SP",
     inicial: "M",
+    cor: "#F5C400",
   },
   {
     text: "O que me convenceu foi poder abrir no celular e no tablet ao mesmo tempo. Eu fico no salão enquanto minha esposa atende pelo celular na cozinha. Nenhum pedido passa batido.",
@@ -16,6 +17,7 @@ const DEPOIMENTOS = [
     estabelecimento: "Pizzaria Bella Napoli",
     cidade: "Campinas, SP",
     inicial: "A",
+    cor: "#E6B800",
   },
   {
     text: "Quando soube que a Anota AI tinha sido comprada pelo iFood, me preocupei. Não quero que meu concorrente veja meus dados de clientes. Migrei pro Pede&Recebe e fiquei tranquilo.",
@@ -23,6 +25,7 @@ const DEPOIMENTOS = [
     estabelecimento: "Restaurante Sabor Caseiro",
     cidade: "Belo Horizonte, MG",
     inicial: "R",
+    cor: "#FFD740",
   },
 ];
 
@@ -49,23 +52,29 @@ export default function Depoimentos() {
               className="reveal bg-amarelo border-2 border-preto rounded-2xl p-6 card-hover hover:shadow-lg flex flex-col"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {/* barra preta no topo */}
-              <div className="w-8 h-1 bg-preto rounded-full mb-4" />
+              {/* 5 estrelas */}
               <div className="flex gap-1 mb-4" role="img" aria-label="Avaliação 5 de 5 estrelas">
                 {Array.from({ length: 5 }).map((_, j) => (
-                  <IconStar key={j} size={15} color="#1A1209" aria-hidden="true" />
+                  <IconStar key={j} size={16} color="#1A1209" aria-hidden="true" />
                 ))}
               </div>
+
               <blockquote className="text-preto/70 text-sm leading-relaxed italic flex-1 mb-5">
                 &ldquo;{item.text}&rdquo;
               </blockquote>
+
               <div className="flex items-center gap-3 pt-4 border-t border-preto/15">
-                <div className="w-10 h-10 rounded-full bg-preto flex items-center justify-center text-sm font-bold text-amarelo shrink-0">
+                {/* Avatar estilizado com gradiente */}
+                <div
+                  className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold text-preto shrink-0 shadow-md border-2 border-preto/10"
+                  style={{ backgroundColor: item.cor }}
+                >
                   {item.inicial}
                 </div>
                 <div>
-                  <div className="text-preto font-semibold text-sm">{item.name}</div>
-                  <div className="text-preto/60 text-xs">{item.estabelecimento} — {item.cidade}</div>
+                  <div className="text-preto font-bold text-sm">{item.name}</div>
+                  <div className="text-preto/75 text-xs font-semibold">{item.estabelecimento}</div>
+                  <div className="text-preto/50 text-xs">{item.cidade}</div>
                 </div>
               </div>
             </div>
