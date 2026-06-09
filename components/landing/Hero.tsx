@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { IconArrowRight } from "@/components/ui/icons";
 import FoodPhoto from "@/components/ui/FoodPhoto";
 
@@ -297,18 +298,19 @@ export default function Hero() {
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3">
                 {[
-                  { l: "M", bg: "#F5C400" },
-                  { l: "A", bg: "#E6B800" },
-                  { l: "L", bg: "#FFD740" },
-                  { l: "R", bg: "#F5C400" },
-                  { l: "T", bg: "#E6B800" },
+                  { src: "/logos/noquinha-delivery-4.jpeg",  alt: "Noquinha Pizza",     bg: "#C41E1E" },
+                  { src: "/logos/noquinha-franquias.jpeg",  alt: "Noquinha Franquias", bg: "#1A1209" },
+                  { src: "/logos/bombeef-burger.png",       alt: "Bom Beef Burger",    bg: "#fff" },
+                  { src: "/logos/suco-bagaco.png",          alt: "Suco Bagaço",        bg: "#fff" },
+                  { src: "/logos/gela-cuca.png",            alt: "Gela Cuca",          bg: "#fff" },
+                  { src: "/logos/fruti-polpa.png",          alt: "Fruti Polpa",        bg: "#F5C400" },
                 ].map((av, i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold text-preto shadow-md"
+                    className="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden shrink-0"
                     style={{ backgroundColor: av.bg, zIndex: 5 - i }}
                   >
-                    {av.l}
+                    <Image src={av.src} alt={av.alt} width={40} height={40} className="object-cover w-full h-full" />
                   </div>
                 ))}
               </div>

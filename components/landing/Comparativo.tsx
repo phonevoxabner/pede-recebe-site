@@ -9,7 +9,7 @@ const SCORES = [
 ];
 
 const EXCLUSIVOS = [
-  "API Oficial WhatsApp — sem risco de bloqueio",
+  "API Oficial WhatsApp, sem risco de bloqueio",
   "Gestão de entregas e entregadores",
   "Programa de fidelidade nativo",
   "Cupons de desconto integrados",
